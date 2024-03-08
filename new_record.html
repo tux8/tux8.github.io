@@ -82,7 +82,8 @@
         });
 
         let tg = window.Telegram.WebApp; 
-        tg.MainButton.setParams({text: 'Добавить запись', is_visible: true})
+        tg.MainButton.setParams({text: 'Добавить запись', is_visible: true});
+        tg.MainButton.show();
 
         Telegram.WebApp.onEvent('mainButtonClicked', function(){
             let date = document.getElementById("date").value;
