@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Новая запись</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-7">
+                <label class="">Дата заправки</label>
+                <input id="date" type="datetime-local" class="form-control">
+            </div>
+            <div class="col-5">
+                <label class="">Вид топлива</label>
+                <select id="inputState" class="form-select">
+                    <option>Аи-92</option>
+                    <option>Аи-95</option>
+                    <option>Аи-98</option>
+                    <option>Дизель</option>
+                    <option selected>Пропан</option>
+                    <option>Метан</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <div class="input-group-text"><i class="bi bi-speedometer"></i>Пробег авто</div>
+                <input type="number" class="form-control" placeholder="255 500">
+                <div class="input-group-text">км</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <div class="input-group-text"><i class="bi bi-coin"></i>Цена за литр</div>
+                <input type="number" class="form-control" placeholder="22.30">
+                <div class="input-group-text">руб.</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <div class="input-group-text"><i class="bi bi-droplet-half"></i>Объем</div>
+                <input type="number" class="form-control" placeholder="90.22">
+                <div class="input-group-text">л.</div>
+                <div class="input-group-text">
+                    <input class="form-check-input" type="checkbox" id="isFull">
+                    <label class="form-check-label" for="isFull">полный бак</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="input-group">
+                <div class="input-group-text"><i class="bi bi-cash-stack"></i>Полная стоимость</div>
+                <input type="number" class="form-control" placeholder="2 090.22" readonly>
+                <div class="input-group-text">руб.</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toLocalISOString(date) {
+            const localDate = new Date(date - date.getTimezoneOffset() * 60000); //offset in milliseconds. Credit https://stackoverflow.com/questions/10830357/javascript-toisostring-ignores-timezone-offset
+            // Optionally remove second/millisecond if needed
+            localDate.setSeconds(null);
+            localDate.setMilliseconds(null);
+            return localDate.toISOString().slice(0, -1);
+        }
+        window.addEventListener("load", () => {
+            document.getElementById("date").value = toLocalISOString(new Date());
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

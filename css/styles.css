@@ -1,0 +1,19 @@
+body {
+    padding: 10px;
+}
+
+i {
+    padding-right: 10px;
+}
+
+.row {
+    padding-bottom: 10px;
+}
+
+#isFull {
+    margin-right: 7px;
+}
+
+.form-control {
+    font-weight: bold;
+}
