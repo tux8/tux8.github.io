@@ -89,14 +89,19 @@
         let date = document.getElementById("date");
         let odometer = document.getElementById("odometer");
         let gas_price = document.getElementById("gas_price");
-        let gas_value = document.getElementById("gas_value");
+        let gas_volume = document.getElementById("gas_volume");
         let sum_price = document.getElementById("sum_price");
+        
         gas_price.addEventListener("change", () => {
-            if (gas_value.value) {
-                sum_price.value = gas_price.value;
-            };
-            
-            
+            if (gas_price.value && gas_volume.value) {
+                sum_price.value = gas_price.value * gas_volume.value;
+            };            
+        })
+
+        gas_volume.addEventListener("change", () => {
+            if (gas_price.value && gas_volume.value) {
+                sum_price.value = gas_price.value * gas_volume.value;
+            };            
         })
 
 
