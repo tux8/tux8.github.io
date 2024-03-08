@@ -81,8 +81,9 @@
             document.getElementById("date").value = toLocalISOString(new Date());
         });
 
-        let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-        tg.MainButton.text = "ДОБАВИТЬ ЗАПИСЬ"; //изменяем текст кнопки 
+        let tg = window.Telegram.WebApp; 
+        tg.MainButton.setParams({text: 'Добавить запись', is_visible: true})
+
         Telegram.WebApp.onEvent('mainButtonClicked', function(){
             let date = document.getElementById("date").value;
             let odometer = document.getElementById("odometer").value;
