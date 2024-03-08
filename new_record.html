@@ -88,7 +88,7 @@
 
         let gas_price = document.getElementById("gas_price");
         let sum_price = document.getElementById("sum_price");
-        gas_price.addEventListener("click", () => {
+        gas_price.addEventListener("change", () => {
             sum_price.value = gas_price.value;
             tg.HapticFeedback.selectionChanged();
         })
