@@ -86,23 +86,26 @@
         tg.MainButton.setParams({text: 'Добавить запись', is_visible: true});
         // tg.MainButton.show();
 
+        let date = document.getElementById("date");
+        let odometer = document.getElementById("odometer");
         let gas_price = document.getElementById("gas_price");
+        let gas_value = document.getElementById("gas_value");
         let sum_price = document.getElementById("sum_price");
         gas_price.addEventListener("change", () => {
-            sum_price.value = gas_price.value;
-            tg.HapticFeedback.selectionChanged();
+            if (gas_value.value) {
+                sum_price.value = gas_price.value;
+            };
+            
+            
         })
 
 
 
         Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            let date = document.getElementById("date").value;
-            let odometer = document.getElementById("odometer").value;
-            let gas_price = document.getElementById("gas_price").value;
             let data = {
-                date: date,
-                odometer: odometer,
-                gas_price: gas_price,
+                date: date.value,
+                odometer: odometer.value,
+                gas_price: gas_price.value,
             }
             tg.HapticFeedback.selectionChanged();
             tg.sendData(JSON.stringify(data)); 
