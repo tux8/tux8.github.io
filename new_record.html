@@ -94,13 +94,19 @@
         
         gas_price.addEventListener("change", () => {
             if (gas_price.value && gas_volume.value) {
-                sum_price.value = gas_price.value * gas_volume.value;
-            };            
+                sum = gas_price.value * gas_volume.value;
+                sum_price.value = sum.toFixed(2);
+            } else {
+                sum_price.value = "";
+            };           
         })
 
         gas_volume.addEventListener("change", () => {
             if (gas_price.value && gas_volume.value) {
-                sum_price.value = gas_price.value * gas_volume.value;
+                sum = gas_price.value * gas_volume.value;
+                sum_price.value = sum.toFixed(2);
+            } else {
+                sum_price.value = "";
             };            
         })
 
