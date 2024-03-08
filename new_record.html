@@ -25,7 +25,7 @@
             </div>
             <div class="col-5">
                 <label class="">Вид топлива</label>
-                <select id="inputState" class="form-select">
+                <select id="gas_type" id="inputState" class="form-select">
                     <option>Аи-92</option>
                     <option>Аи-95</option>
                     <option>Аи-98</option>
@@ -38,32 +38,32 @@
         <div class="row">
             <div class="input-group">
                 <div class="input-group-text"><i class="bi bi-speedometer"></i>Пробег авто</div>
-                <input type="number" class="form-control" placeholder="255 500">
+                <input id="odometer" type="number" class="form-control" placeholder="255 500">
                 <div class="input-group-text">км</div>
             </div>
         </div>
         <div class="row">
             <div class="input-group">
                 <div class="input-group-text"><i class="bi bi-coin"></i>Цена за литр</div>
-                <input type="number" class="form-control" placeholder="22.30">
+                <input id="gas_price" type="number" class="form-control" placeholder="22.30">
                 <div class="input-group-text">руб.</div>
             </div>
         </div>
         <div class="row">
             <div class="input-group">
                 <div class="input-group-text"><i class="bi bi-droplet-half"></i>Объем</div>
-                <input type="number" class="form-control" placeholder="90.22">
+                <input id="gas_volume" type="number" class="form-control" placeholder="90.22">
                 <div class="input-group-text">л.</div>
                 <div class="input-group-text">
-                    <input class="form-check-input" type="checkbox" id="isFull">
-                    <label class="form-check-label" for="isFull">полный бак</label>
+                    <input class="form-check-input" type="checkbox" id="is_full">
+                    <label class="form-check-label" for="is_full">полный бак</label>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="input-group">
                 <div class="input-group-text"><i class="bi bi-cash-stack"></i>Полная стоимость</div>
-                <input type="number" class="form-control" placeholder="2 090.22" readonly>
+                <input id="sum_price" type="number" class="form-control" placeholder="2 090.22" readonly>
                 <div class="input-group-text">руб.</div>
             </div>
         </div>
@@ -84,7 +84,16 @@
         let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
         tg.MainButton.text = "ДОБАВИТЬ ЗАПИСЬ"; //изменяем текст кнопки 
         Telegram.WebApp.onEvent('mainButtonClicked', function(){
-            tg.sendData("some string that we need to send"); 
+            let date = document.getElementById("date").value;
+            let odometer = document.getElementById("odometer").value;
+            let gas_price = document.getElementById("gas_price").value;
+            let data = {
+                date: date,
+                odometer: odometer,
+                gas_price: gas_price,
+            }
+            tg.HapticFeedback.selectionChanged();
+            tg.sendData(JSON.stringify(data)); 
             //при клике на основную кнопку отправляем данные в строковом виде
         });
     </script>
