@@ -4,8 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Расписание занятий</title>
+    <script type='importmap'>
+        {
+          "imports": {
+            "@fullcalendar/core": "https://cdn.skypack.dev/@fullcalendar/core@6.1.11",
+            "@fullcalendar/daygrid": "https://cdn.skypack.dev/@fullcalendar/daygrid@6.1.11",
+            "@fullcalendar/timegrid": "https://cdn.skypack.dev/@fullcalendar/timegrid@6.1.11",
+            "@fullcalendar/list": "https://cdn.skypack.dev/@fullcalendar/list@6.1.11",
+            "@fullcalendar/interaction": "https://cdn.skypack.dev/@fullcalendar/interaction@6.1.11",
+            "@fullcalendar/locales_ru": "https://cdn.skypack.dev/@fullcalendar/core/locales/ru"
+          }
+        }
+      </script>
+      <script type='module'>
+        import { Calendar } from '@fullcalendar/core'
+        import dayGridPlugin from '@fullcalendar/daygrid'
+        import timeGridPlugin from '@fullcalendar/timegrid'
+        import listPlugin from '@fullcalendar/list'
+        import interactionPlugin from '@fullcalendar/interaction'
+        import ruLocale from '@fullcalendar/locales_ru'
+  
+        document.addEventListener('DOMContentLoaded', function() {
+          const calendarEl = document.getElementById('calendar')
+          const calendar = new Calendar(calendarEl, {
+            plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+            locale: ruLocale,
+            headerToolbar: {
+              left: 'prev,next today',
+              center: 'title',
+              right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            },
+            events: [
+                {
+                    title: 'Зарплата',
+                    start: '2024-04-10'
+                }
+            ],
+
+          })
+          calendar.render()
+        })
+      </script>
 </head>
 <body>
-    
+    <div id='calendar'></div>
 </body>
 </html>
